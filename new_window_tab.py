@@ -543,7 +543,7 @@ def FourierDouble():
     ANSTi,armonicoSTi=calc_Fourier_img(xs,ys)
 
 
-    minimo = len(armonico)/2
+    minimo = 30
 
     plt.figure(1)
 
@@ -570,7 +570,11 @@ def FourierDouble():
 
             cima=AN[i]*ANST[i]+ANi[i]*ANSTi[i]
             baixo=pow(ANST[i],2)+pow(ANSTi[i],2)
+
             newAN.append(cima/baixo)
+##            newAN.append(AN[i]+ANST[i])
+
+
 
         except:
             pass
