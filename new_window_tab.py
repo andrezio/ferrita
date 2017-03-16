@@ -543,6 +543,8 @@ def FourierDouble():
     ANSTi,armonicoSTi=calc_Fourier_img(xs,ys)
 
 
+    minimo = len(armonico)/2
+
     plt.figure(1)
 
     plt.subplot(221)
@@ -550,11 +552,11 @@ def FourierDouble():
     plt.xlabel('L(nm)')
     plt.ylabel("A(L)")
     plt.title("SAMPLE")
-    plt.plot(armonico[0:30],AN[0:30],linestyle='-', marker='o')
+    plt.plot(armonico[0:minimo],AN[0:minimo],linestyle='-', marker='o')
 
     plt.subplot(222)
     plt.grid()
-    plt.plot(armonicoST[0:30],ANST[0:30], c='k',linestyle='-', marker='o')
+    plt.plot(armonicoST[0:minimo],ANST[0:minimo], c='k',linestyle='-', marker='o')
     plt.xlabel('L(nm)')
     plt.ylabel("A(L)")
     plt.title("STANDARD ")
@@ -569,13 +571,13 @@ def FourierDouble():
             cima=AN[i]*ANST[i]+ANi[i]*ANSTi[i]
             baixo=pow(ANST[i],2)+pow(ANSTi[i],2)
             newAN.append(cima/baixo)
-##            newAN.append(AN[i]/ANST[i])
+
         except:
             pass
 
     ############################
-    inicio=int(boxFmin.get())
-    fim=int(boxFmax.get())
+    inicio=int(boxFminst.get())
+    fim=int(boxFmaxst.get())
 
     if (inicio == fim -1):
         fim +=1
@@ -614,7 +616,7 @@ def FourierDouble():
 
     plt.grid()
 
-    plt.plot(newarmonico[0:30],newAN[0:30], c='k',linestyle='-', marker='o',label='$L_A(nm)$: '+str("%.4f"%XS))
+    plt.plot(newarmonico[0:minimo],newAN[0:minimo], c='k',linestyle='-', marker='o',label='$L_A(nm)$: '+str("%.4f"%XS))
     plt.plot(lx,ly, 'red')
     plt.xlabel('L(nm)')
     plt.ylabel("A(L)")
